@@ -1,5 +1,5 @@
 export default class User {
-  constructor(socket, id, platerId, latency) {
+  constructor(socket, id, playerId, latency) {
     this.id = id;
     this.socket = socket;
     this.playerId = playerId;
