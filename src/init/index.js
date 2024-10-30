@@ -1,7 +1,7 @@
 import { loadProtos } from './loadProto.js';
 
 const initServer = async () => {
-  await loadProtos;
+  await loadProtos();
 };
 
 export default initServer;

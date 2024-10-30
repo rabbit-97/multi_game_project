@@ -1,1 +1,1 @@
-export const onError = (socket) => (data) => {};
+export const onError = (socket) => (err) => {};

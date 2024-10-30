@@ -1,11 +1,11 @@
-import { CLIENT_VERSION } from '../../src/constants/env.js';
-import { getProtoTypeNameByHandlerId } from '../../src/handler/index.js';
-import { getProtoMessages } from '../../src/init/loadProto.js';
+import { CLIENT_VERSION } from '../../constants/env.js';
+import { getProtoTypeNameByHandlerId } from '../../handler/index.js';
+import { getProtoMessages } from '../../init/loadProto.js';
 
 export const packetParser = (data) => {
   const protoMessages = getProtoMessages();
 
-  const commonPacket = protoMessages['common.Packet'];
+  const commonPacket = protoMessages.common.Packet;
   let packet;
   try {
     packet = commonPacket.decode(data);
