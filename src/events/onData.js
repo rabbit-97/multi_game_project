@@ -2,8 +2,6 @@ import { packetParser } from '../utils/parser/packetParser.js';
 import { PACKET_TYPE, PACKET_TYPE_LENGTH, TOTAL_LENGTH } from '../constants/header.js';
 
 export const onData = (socket) => (data) => {
-  console.log('Received data:', data);
-
   socket.buffer = Buffer.concat([socket.buffer, data]);
   const totalHerderLength = TOTAL_LENGTH + PACKET_TYPE_LENGTH;
 
