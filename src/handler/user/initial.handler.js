@@ -5,8 +5,8 @@ import { createResponse } from '../../utils/response/createResponse.js';
 
 const initialHandler = ({ socket, userId, payload }) => {
   try {
-    const { deviceId, latency, userId } = payload;
-    const user = addUser(socket, deviceId, userId, latency);
+    const { deviceId, latency, playerId } = payload;
+    const user = addUser(socket, deviceId, playerId, latency);
     const gameSession = getGameSession();
     gameSession.addUser(user);
 
