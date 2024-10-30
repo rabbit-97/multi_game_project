@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
-    "migrate": "node src/db/migrations/createSchemas.js"
+    "migrate": "node src/db/migrations/createSchema.js"
   },
   "keywords": [],
   "author": "",
