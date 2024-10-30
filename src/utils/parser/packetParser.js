@@ -22,7 +22,6 @@ export const packetParser = (data) => {
   }
 
   const protoTypeName = getProtoTypeNameByHandlerId(handlerId);
-  console.log('Proto type name:', protoTypeName);
   if (!protoTypeName) {
     throw new Error(`Handler ID ${handlerId} not found`);
   }
