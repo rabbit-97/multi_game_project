@@ -18,7 +18,9 @@ export const locationUpdateHandler = ({ socket, userId, payload }) => {
 
     user.updatePosition(x, y);
 
-    socket.write('');
+    const locationData = gameSession.getAllLocation(userId);
+
+    socket.write(locationData);
   } catch (error) {
     console.error('Error handling packet:', error);
   }
