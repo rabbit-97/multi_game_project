@@ -2,8 +2,8 @@ export const packetNames = {
   common: {
     Packet: 'common.Packet',
   },
-  init: {
-    InitServer: 'initial.InitialPayload',
+  initial: {
+    InitialPayload: 'initial.InitialPayload',
   },
   game: {
     LocationUpdatePayload: 'game.LocationUpdatePayload',
