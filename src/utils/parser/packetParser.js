@@ -22,11 +22,14 @@ export const packetParser = (data) => {
   }
 
   const protoTypeName = getProtoTypeNameByHandlerId(handlerId);
+  console.log('Proto type name:', protoTypeName);
   if (!protoTypeName) {
     throw new Error(`Handler ID ${handlerId} not found`);
   }
 
   const [namespace, typeName] = protoTypeName.split('.');
+  console.log('Namespace:', namespace);
+  console.log('Type name:', typeName);
   const payloadType = protoMessages[namespace][typeName];
   let payload;
 

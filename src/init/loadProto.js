@@ -38,8 +38,8 @@ export const loadProtos = async () => {
         protoMessages[namespace][type] = root.lookupType(typeName);
       }
     }
-
     console.log('Protobuf 파일이 로드되었습니다.');
+    console.log('protoMessages:', JSON.stringify(protoMessages, null, 2));
   } catch (error) {
     console.error('Protobuf 파일 로드 중 오류가 발생했습니다:', error);
   }
