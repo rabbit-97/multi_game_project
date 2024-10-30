@@ -2,7 +2,7 @@ export default class User {
   constructor(socket, id, platerId, latency) {
     this.id = id;
     this.socket = socket;
-    this.platerId = platerId;
+    this.playerId = playerId;
     this.latency = latency;
     this.x = 0;
     this.y = 0;
@@ -11,6 +11,6 @@ export default class User {
   updatePosition(x, y) {
     this.x = x;
     this.y = y;
-    this.laastUpdateTime = Date.now();
+    this.lastUpdateTime = Date.now();
   }
 }
