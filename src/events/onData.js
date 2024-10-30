@@ -6,20 +6,14 @@ export const onData = (socket) => (data) => {
 
   socket.buffer = Buffer.concat([socket.buffer, data]);
   const totalHerderLength = TOTAL_LENGTH + PACKET_TYPE_LENGTH;
-  console.log('Buffer:', socket.buffer);
 
   while (socket.buffer.length > totalHerderLength) {
     const length = socket.buffer.readUInt32BE(0);
     const packetType = socket.buffer.readUInt8(TOTAL_LENGTH);
 
-    console.log('Packet length:', length);
-    console.log('Packet type:', packetType);
-
     if (socket.buffer.length >= length) {
       const packet = socket.buffer.subarray(totalHerderLength, length);
       socket.buffer = socket.buffer.subarray(length);
-
-      console.log('Packet data:', packet);
 
       try {
         switch (packetType) {
