@@ -20,3 +20,13 @@ export const createLocationPacket = (users) => {
   const locationPacket = location.encode(message).finish();
   return serializer(locationPacket, PACKET_TYPE.LOCATION);
 };
+
+export const createPingPacket = (timestamp) => {
+  const protoMessage = getProtoMessages();
+  const ping = protoMessage.common.Ping;
+
+  const payload = { timestamp };
+  const message = location.create(payload);
+  const pingPacket = location.encode(message).finish();
+  return serializer(pingPacket, PACKET_TYPE.PING);
+};
