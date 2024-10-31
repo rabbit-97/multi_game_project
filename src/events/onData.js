@@ -1,6 +1,8 @@
 import { packetParser } from '../utils/parser/packetParser.js';
 import { PACKET_TYPE, PACKET_TYPE_LENGTH, TOTAL_LENGTH } from '../constants/header.js';
 import { getHandlerById } from '../handler/index.js';
+import CustomError from '../utils/error/customError.js';
+import { ErrorCodes } from '../utils/error/errorCodes.js';
 
 export const onData = (socket) => (data) => {
   socket.buffer = Buffer.concat([socket.buffer, data]);
@@ -24,7 +26,7 @@ export const onData = (socket) => (data) => {
           }
         }
       } catch (error) {
-        console.error('Error handling packet:', error);
+        throw new CustomError(ErrorCodes.PACKET_DECODE_ERROR, error);
       }
     } else {
       break;

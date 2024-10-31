@@ -1,4 +1,6 @@
 import { getGameSession } from '../../sessions/game.session.js';
+import CustomError from '../../utils/error/customError.js';
+import { ErrorCodes } from '../../utils/error/errorCodes.js';
 
 export const locationUpdateHandler = ({ socket, userId, payload }) => {
   try {
@@ -22,7 +24,7 @@ export const locationUpdateHandler = ({ socket, userId, payload }) => {
 
     socket.write(locationData);
   } catch (error) {
-    console.error('Error handling packet:', error);
+    throw new CustomError(ErrorCodes.PACKET_DECODE_ERROR, error);
   }
 };
 
