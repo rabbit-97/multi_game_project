@@ -34,10 +34,12 @@ export default class Game {
     this.users.forEach((user) => {
       maxLatency = Math.max(maxLatency, user.latency);
     });
+    return maxLatency;
   }
 
   getAllLocation(userId) {
     const maxLatency = this.getMaxLatency();
+    // console.log(maxLatency);
     const locationData = this.users
       .filter((user) => user.id !== userId)
       .map((user) => {

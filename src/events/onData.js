@@ -28,7 +28,8 @@ export const onData = (socket) => (data) => {
               if (!user) {
                 throw new CustomError(ErrorCodes.USER_NOT_FOUND, '유저를 찾을 수 없습니다.');
               }
-              user.handlePong(pingMessage);
+              // 클라이언트 코드 구현 실패
+              // user.handlePong(pingMessage);
             }
             break;
 
