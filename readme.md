@@ -44,6 +44,15 @@
     ├── parser
     └── response
 
+### 사용한 패키지
+
+    dotenv
+    lodash
+    long
+    mysql2
+    protobufjs
+    uuid
+    
 ### 프로토콜 버퍼
 
 서버에서 클라이언트 양식에 맞춰 프로토 파일을 만들어 패킷으로 클라이언트에 정보를 보낸다.
