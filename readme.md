@@ -148,9 +148,12 @@
 
     }
 
-    // 패킷 타입
+#### 패킷 타입
+
     public enum PacketType { Ping, Normal, Location = 3 }
-    // 핸들러 아이디
+    
+#### 핸들러 아이디
+
     public enum HandlerIds {
     Init = 0,
     LocationUpdate = 2
