@@ -1,3 +1,5 @@
+import { createPingPacket } from '../../utils/notification/game.notification.js';
+
 export default class User {
   constructor(socket, id, playerId, latency, coords) {
     this.id = id;
@@ -22,7 +24,8 @@ export default class User {
   ping() {
     const now = Date.now();
 
-    this.socket.write('');
+    console.log(`${this.id}: ping`);
+    this.socket.write(createPingPacket(now));
   }
 
   handlePong() {
