@@ -13,6 +13,7 @@ export default class User {
     this.lastUpdateTime = Date.now();
     this.speed = 3;
   }
+
   updatePosition(x, y) {
     this.lastX = this.x;
     this.lastY = this.y;
@@ -28,9 +29,10 @@ export default class User {
     this.socket.write(createPingPacket(now));
   }
 
-  handlePong() {
+  handlePong(data) {
     const now = Date.now();
-    this.latency = (now - Data.timestamp) / 2;
+    this.latency = (now - data.timestamp) / 2;
+    console.log(`${this.id}: pong, latency: ${this.latency}ms`);
   }
 
   calculatePosition(latency) {

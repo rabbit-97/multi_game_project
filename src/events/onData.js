@@ -1,9 +1,8 @@
 import { packetParser } from '../utils/parser/packetParser.js';
 import { PACKET_TYPE, PACKET_TYPE_LENGTH, TOTAL_LENGTH } from '../constants/header.js';
 import { getHandlerById } from '../handler/index.js';
-import CustomError from '../utils/error/customError.js';
-import { ErrorCodes } from '../utils/error/errorCodes.js';
 import { getProtoMessages } from '../init/loadProto.js';
+import { getUserBySocket } from '../sessions/users.session.js';
 
 export const onData = (socket) => (data) => {
   socket.buffer = Buffer.concat([socket.buffer, data]);
@@ -23,13 +22,9 @@ export const onData = (socket) => (data) => {
             {
               const protoMessages = getProtoMessages();
               const Ping = protoMessages.common.Ping;
-              const pingMessage = Ping.decode(packet);
+              const pingPacket = Ping.decode(packet);
               const user = getUserBySocket(socket);
-              if (!user) {
-                throw new CustomError(ErrorCodes.USER_NOT_FOUND, '유저를 찾을 수 없습니다.');
-              }
-              // 클라이언트 코드 구현 실패
-              // user.handlePong(pingMessage);
+              user.handlePong(pingPacket);
             }
             break;
 
@@ -41,7 +36,7 @@ export const onData = (socket) => (data) => {
           }
         }
       } catch (error) {
-        throw new CustomError(ErrorCodes.PACKET_DECODE_ERROR, error);
+        console.error(error);
       }
     } else {
       break;
