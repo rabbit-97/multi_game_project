@@ -20,7 +20,6 @@ export const onData = (socket) => (data) => {
         switch (packetType) {
           case PACKET_TYPE.PING:
             {
-              console.log('Received PING packet');
               const protoMessages = getProtoMessages();
               const Ping = protoMessages.common.Ping;
               const pingPacket = Ping.decode(packet);
